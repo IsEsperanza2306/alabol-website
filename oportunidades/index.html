@@ -1212,6 +1212,17 @@
                 else if (car.notas.includes('La Paz')) location = 'La Paz, B.C.S.';
                 else if (car.notas.includes('Carmen') || car.notas.includes('Campeche')) location = 'Cd. del Carmen, Camp.';
                 else if (car.notas.includes('Baja California')) location = 'Baja California Sur';
+                // US locations (GovDeals)
+                else if (car.notas.includes('Nashville')) location = 'Nashville, TN';
+                else if (car.notas.includes('Tennessee')) location = 'Tennessee, USA';
+                else if (car.notas.includes('Florida')) location = 'Florida, USA';
+                else if (car.notas.includes('Georgia')) location = 'Georgia, USA';
+                else if (car.notas.includes('Ohio')) location = 'Ohio, USA';
+                else if (car.notas.includes('New Jersey')) location = 'New Jersey, USA';
+                else if (car.notas.includes('Wilmington')) location = 'Wilmington, NC';
+                else if (car.notas.includes('Alabama')) location = 'Alabama, USA';
+                else if (car.notas.includes('Oregon')) location = 'Oregon, USA';
+                else if (car.notas.includes('Mississippi')) location = 'Mississippi, USA';
 
                 // Format auction date
                 const auctionDate = new Date(car.fechaLimite + 'T00:00:00');

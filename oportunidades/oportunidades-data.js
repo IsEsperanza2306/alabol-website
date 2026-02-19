@@ -1,11 +1,12 @@
 // ============================================
 // OPORTUNIDADES DE SUBASTA — ALABOL CAR BROKER
 // ============================================
-// Última actualización: 18 Febrero 2026
+// Última actualización: 19 Febrero 2026
 // Subastas:
-//   - LVA México — 19 Feb 2026 (MAÑANA)
+//   - LVA México — 19 Feb 2026 (HOY)
 //   - Hilco Acetec — 26 Feb 2026
-// Total: 25 oportunidades
+//   - GovDeals USA — Varias fechas (Feb-Mar 2026)
+// Total: 35 oportunidades
 // ============================================
 
 const OPORTUNIDADES = [
@@ -466,6 +467,166 @@ const OPORTUNIDADES = [
         fechaLimite: '2026-02-26',
         foto: 'fotos/ram-4000.jpg',
         notas: '💰 Precio reservado. Guanajuato',
+        disponible: true
+    },
+
+    // =============================================
+    // GOVDEALS USA — Varias fechas Feb-Mar 2026
+    // Subastas de gobierno USA — Vehículos 2017-2018
+    // VIN inicia con 1-5 (fabricados en USA/Canadá)
+    // =============================================
+
+    // --- SEDANES USA (GOVDEALS) ---
+
+    {
+        marca: 'Chevrolet',
+        modelo: 'Impala LT V6 3.6L',
+        anio: 2017,
+        tipo: 'sedan',
+        origen: 'usa',
+        danio: 'Funciona bien, pequeños golpes por granizo. Luz de llanta en dash. Título limpio — vehículo gubernamental',
+        precioTotal: 90000,
+        precioMercado: 280000,
+        fechaLimite: '2026-02-28',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio, gobierno. Bid actual ~$4,500 USD. Tennessee',
+        disponible: true
+    },
+
+    {
+        marca: 'Dodge',
+        modelo: 'Charger SXT 3.6L V6',
+        anio: 2017,
+        tipo: 'deportivo',
+        origen: 'usa',
+        danio: '85,471 km. Patrulla retirada, buen estado mecánico. Título limpio',
+        precioTotal: 180000,
+        precioMercado: 420000,
+        fechaLimite: '2026-02-28',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid ~$8,900 USD. Ex-patrulla. Florida',
+        disponible: true
+    },
+
+    {
+        marca: 'Toyota',
+        modelo: 'Camry SE 2.5L',
+        anio: 2018,
+        tipo: 'sedan',
+        origen: 'usa',
+        danio: 'Buen estado general. Problema de transmisión conocido. 92,000 km. Título limpio',
+        precioTotal: 180000,
+        precioMercado: 380000,
+        fechaLimite: '2026-03-01',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid ~$8,900 USD. Problema de transmisión. Georgia',
+        disponible: true
+    },
+
+    {
+        marca: 'Chevrolet',
+        modelo: 'Malibu LT 1.5L Turbo',
+        anio: 2017,
+        tipo: 'sedan',
+        origen: 'usa',
+        danio: 'Estado regular, detalles cosméticos menores. Operable. Título limpio — vehículo de flota gubernamental',
+        precioTotal: 40000,
+        precioMercado: 260000,
+        fechaLimite: '2026-03-01',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Reserva $1,800 USD. Vehículo de flota. Ohio',
+        disponible: true
+    },
+
+    {
+        marca: 'Ford',
+        modelo: 'Explorer 3.5L V6 4WD',
+        anio: 2017,
+        tipo: 'suv',
+        origen: 'usa',
+        danio: 'Ex-patrulla policial, funcional. Detalles de uso normal. 105,000 km. Título limpio',
+        precioTotal: 130000,
+        precioMercado: 380000,
+        fechaLimite: '2026-02-25',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid ~$6,468 USD. Ex-patrulla. Nashville, TN',
+        disponible: true
+    },
+
+    // --- SUVs USA (GOVDEALS) ---
+
+    {
+        marca: 'Dodge',
+        modelo: 'Charger Pursuit 5.7L V8 HEMI',
+        anio: 2018,
+        tipo: 'deportivo',
+        origen: 'usa',
+        danio: 'Ex-patrulla, transmisión nueva (Mar 2022). Luz de check engine. 128,000 km. Título limpio',
+        precioTotal: 140000,
+        precioMercado: 450000,
+        fechaLimite: '2026-03-05',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid ~$7,087 USD. Motor HEMI V8. New Jersey',
+        disponible: true
+    },
+
+    {
+        marca: 'Chevrolet',
+        modelo: 'Tahoe 5.3L V8 Police',
+        anio: 2018,
+        tipo: 'suv',
+        origen: 'usa',
+        danio: 'Arranca con jump, corre y maneja. Bat mala, liftgate no abre. AC frío. Título limpio',
+        precioTotal: 120000,
+        precioMercado: 500000,
+        fechaLimite: '2026-03-05',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid ~$6,000 USD. Wilmington, NC',
+        disponible: true
+    },
+
+    {
+        marca: 'Ford',
+        modelo: 'Explorer Police Interceptor 3.7L V6',
+        anio: 2018,
+        tipo: 'suv',
+        origen: 'usa',
+        danio: 'Funcional, estado regular. Ex-flota gubernamental. 98,000 km. Título limpio',
+        precioTotal: 70000,
+        precioMercado: 380000,
+        fechaLimite: '2026-02-27',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid ~$3,852 USD. Vehículo de flota. Alabama',
+        disponible: true
+    },
+
+    {
+        marca: 'Nissan',
+        modelo: 'Rogue SV 2.5L CVT',
+        anio: 2017,
+        tipo: 'suv',
+        origen: 'usa',
+        danio: 'Buen estado, uso normal. SUV compacta. 78,000 km. Título limpio',
+        precioTotal: 120000,
+        precioMercado: 340000,
+        fechaLimite: '2026-03-01',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid estimado ~$5,500 USD. Oregon',
+        disponible: true
+    },
+
+    {
+        marca: 'Jeep',
+        modelo: 'Grand Cherokee SRT 6.4L V8 4x4',
+        anio: 2018,
+        tipo: 'suv',
+        origen: 'usa',
+        danio: 'Arranca y maneja, sin problemas conocidos. Parabrisas estrellado, cuero del dash desgastado. Título limpio',
+        precioTotal: 530000,
+        precioMercado: 1100000,
+        fechaLimite: '2026-02-25',
+        foto: '',
+        notas: '🇺🇸 GovDeals — Título limpio. Bid ~$26,200 USD. Motor SRT 6.4L V8. Mississippi',
         disponible: true
     },
 
