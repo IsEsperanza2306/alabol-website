@@ -488,7 +488,7 @@ const OPORTUNIDADES = [
         precioTotal: 90000,
         precioMercado: 280000,
         fechaLimite: '2026-02-28',
-        foto: '',
+        foto: 'fotos/impala-2017.jpg',
         notas: '🇺🇸 GovDeals — Título limpio, gobierno. Bid actual ~$4,500 USD. Tennessee',
         disponible: true
     },
@@ -503,7 +503,7 @@ const OPORTUNIDADES = [
         precioTotal: 180000,
         precioMercado: 420000,
         fechaLimite: '2026-02-28',
-        foto: '',
+        foto: 'fotos/charger-2017.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid ~$8,900 USD. Ex-patrulla. Florida',
         disponible: true
     },
@@ -518,7 +518,7 @@ const OPORTUNIDADES = [
         precioTotal: 180000,
         precioMercado: 380000,
         fechaLimite: '2026-03-01',
-        foto: '',
+        foto: 'fotos/camry-2018.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid ~$8,900 USD. Problema de transmisión. Georgia',
         disponible: true
     },
@@ -533,7 +533,7 @@ const OPORTUNIDADES = [
         precioTotal: 40000,
         precioMercado: 260000,
         fechaLimite: '2026-03-01',
-        foto: '',
+        foto: 'fotos/malibu-2017.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Reserva $1,800 USD. Vehículo de flota. Ohio',
         disponible: true
     },
@@ -548,7 +548,7 @@ const OPORTUNIDADES = [
         precioTotal: 130000,
         precioMercado: 380000,
         fechaLimite: '2026-02-25',
-        foto: '',
+        foto: 'fotos/explorer-2017.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid ~$6,468 USD. Ex-patrulla. Nashville, TN',
         disponible: true
     },
@@ -565,7 +565,7 @@ const OPORTUNIDADES = [
         precioTotal: 140000,
         precioMercado: 450000,
         fechaLimite: '2026-03-05',
-        foto: '',
+        foto: 'fotos/charger-pursuit-2018.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid ~$7,087 USD. Motor HEMI V8. New Jersey',
         disponible: true
     },
@@ -580,7 +580,7 @@ const OPORTUNIDADES = [
         precioTotal: 120000,
         precioMercado: 500000,
         fechaLimite: '2026-03-05',
-        foto: '',
+        foto: 'fotos/tahoe-2018.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid ~$6,000 USD. Wilmington, NC',
         disponible: true
     },
@@ -595,7 +595,7 @@ const OPORTUNIDADES = [
         precioTotal: 70000,
         precioMercado: 380000,
         fechaLimite: '2026-02-27',
-        foto: '',
+        foto: 'fotos/explorer-2018.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid ~$3,852 USD. Vehículo de flota. Alabama',
         disponible: true
     },
@@ -610,7 +610,7 @@ const OPORTUNIDADES = [
         precioTotal: 120000,
         precioMercado: 340000,
         fechaLimite: '2026-03-01',
-        foto: '',
+        foto: 'fotos/rogue-2017.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid estimado ~$5,500 USD. Oregon',
         disponible: true
     },
@@ -625,7 +625,7 @@ const OPORTUNIDADES = [
         precioTotal: 530000,
         precioMercado: 1100000,
         fechaLimite: '2026-02-25',
-        foto: '',
+        foto: 'fotos/grand-cherokee-srt-2018.jpg',
         notas: '🇺🇸 GovDeals — Título limpio. Bid ~$26,200 USD. Motor SRT 6.4L V8. Mississippi',
         disponible: true
     },
