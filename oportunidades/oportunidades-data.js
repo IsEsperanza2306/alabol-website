@@ -27,7 +27,7 @@ const OPORTUNIDADES = [
         precioTotal: 50000,
         precioMercado: 140000,
         fechaLimite: '2026-02-19',
-        foto: '',
+        foto: 'fotos/march-cargo.jpg',
         notas: '🔥 MAÑANA 19 FEB — Auto económico, enciende. Requiere trabajo en interiores. CDMX',
         disponible: true
     },
@@ -42,7 +42,7 @@ const OPORTUNIDADES = [
         precioTotal: 55000,
         precioMercado: 155000,
         fechaLimite: '2026-02-19',
-        foto: '',
+        foto: 'fotos/march-cargo.jpg',
         notas: '🔥 MAÑANA 19 FEB — Auto económico, enciende. Requiere trabajo en interiores. CDMX',
         disponible: true
     },
@@ -57,7 +57,7 @@ const OPORTUNIDADES = [
         precioTotal: 80000,
         precioMercado: 220000,
         fechaLimite: '2026-02-19',
-        foto: '',
+        foto: 'fotos/aveo-2022.jpg',
         notas: '🔥 MAÑANA 19 FEB — Modelo 2022 casi nuevo. Se desconoce si enciende. Ciudad Juárez, Chihuahua',
         disponible: true
     },
@@ -72,7 +72,7 @@ const OPORTUNIDADES = [
         precioTotal: 80000,
         precioMercado: 220000,
         fechaLimite: '2026-02-19',
-        foto: '',
+        foto: 'fotos/aveo-2022.jpg',
         notas: '🔥 MAÑANA 19 FEB — Modelo 2022 casi nuevo. Se desconoce si enciende. La Paz, B.C.',
         disponible: true
     },
@@ -87,7 +87,7 @@ const OPORTUNIDADES = [
         precioTotal: 75000,
         precioMercado: 190000,
         fechaLimite: '2026-02-19',
-        foto: '',
+        foto: 'fotos/vento-2016.jpg',
         notas: '🔥 MAÑANA 19 FEB — Sedán económico. Cd. del Carmen, Campeche',
         disponible: true
     },
@@ -104,7 +104,7 @@ const OPORTUNIDADES = [
         precioTotal: 90000,
         precioMercado: 220000,
         fechaLimite: '2026-02-19',
-        foto: '',
+        foto: 'fotos/vento-2016.jpg',
         notas: '🔥 MAÑANA 19 FEB — Sedán operable, buen estado general. CDMX',
         disponible: true
     },
@@ -231,7 +231,7 @@ const OPORTUNIDADES = [
         precioTotal: 50000,
         precioMercado: 130000,
         fechaLimite: '2026-02-26',
-        foto: '',
+        foto: 'fotos/aveo-lot43602.jpg',
         notas: '💰 Precio reservado. Estimado: ~$50k. Ubicación: Baja California Sur',
         disponible: true
     },
