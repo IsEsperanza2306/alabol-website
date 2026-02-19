@@ -1143,9 +1143,20 @@
         // =====================
         // HELPERS
         // =====================
+        function getToday() {
+            const now = new Date();
+            return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        }
+
         function getDaysLeft(fecha) {
-            const diff = new Date(fecha) - new Date();
-            return Math.ceil(diff / (1000 * 60 * 60 * 24));
+            const today = getToday();
+            const auction = new Date(fecha + 'T00:00:00');
+            const auctionDay = new Date(auction.getFullYear(), auction.getMonth(), auction.getDate());
+            return Math.round((auctionDay - today) / (1000 * 60 * 60 * 24));
+        }
+
+        function isAuctionPast(fecha) {
+            return getDaysLeft(fecha) < 0;
         }
 
         // =====================
@@ -1157,14 +1168,16 @@
 
             const filtered = OPORTUNIDADES.filter(car => {
                 if (!car.disponible) return false;
+                // Auto-hide past auctions
+                if (isAuctionPast(car.fechaLimite)) return false;
                 if (activeFilters.tipo !== 'todos' && car.tipo !== activeFilters.tipo) return false;
                 if (activeFilters.origen !== 'todos' && car.origen !== activeFilters.origen) return false;
                 if (activeFilters.fecha !== 'todos' && car.fechaLimite !== activeFilters.fecha) return false;
                 return true;
             });
 
-            // Update stats
-            const disponibles = OPORTUNIDADES.filter(c => c.disponible);
+            // Stats only count active (non-past) auctions
+            const disponibles = OPORTUNIDADES.filter(c => c.disponible && !isAuctionPast(c.fechaLimite));
             document.getElementById('totalCount').textContent = disponibles.length;
             document.getElementById('mxCount').textContent = disponibles.filter(c => c.origen === 'mexico').length;
             document.getElementById('usCount').textContent = disponibles.filter(c => c.origen === 'usa').length;
@@ -1179,6 +1192,9 @@
 
             grid.innerHTML = filtered.map((car, i) => {
                 const daysLeft = getDaysLeft(car.fechaLimite);
+                const isToday = daysLeft === 0;
+                const isTomorrow = daysLeft === 1;
+                const isUrgent = daysLeft <= 1;
                 const originLabel = car.origen === 'mexico' ? '🇲🇽 México' : '🇺🇸 USA';
                 const originClass = car.origen === 'mexico' ? 'mexico' : 'usa';
                 const tipoLabel = car.tipo === 'sedan' ? 'Sedán' : car.tipo === 'suv' ? 'SUV' : car.tipo === 'pickup' ? 'Pick-up' : 'Deportivo';
@@ -1198,11 +1214,26 @@
                 else if (car.notas.includes('Baja California')) location = 'Baja California Sur';
 
                 // Format auction date
-                const auctionDate = new Date(car.fechaLimite);
+                const auctionDate = new Date(car.fechaLimite + 'T00:00:00');
                 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                 const auctionDateStr = `${auctionDate.getDate()} de ${months[auctionDate.getMonth()]} ${auctionDate.getFullYear()}`;
-                const isTomorrow = daysLeft <= 1 && daysLeft >= 0;
-                const isUrgent = daysLeft <= 2;
+
+                // Banner text
+                let bannerPrefix = '';
+                let bannerIcon = '📅';
+                let bannerClass = '';
+                if (isToday) {
+                    bannerPrefix = '¡HOY! ';
+                    bannerIcon = '🔴';
+                    bannerClass = 'tomorrow';
+                } else if (isTomorrow) {
+                    bannerPrefix = '¡MAÑANA! ';
+                    bannerIcon = '🟡';
+                    bannerClass = 'tomorrow';
+                } else if (daysLeft <= 3) {
+                    bannerIcon = '🟡';
+                    bannerClass = '';
+                }
 
                 const msg = encodeURIComponent(
                     `Hola Alabol 👋\n\n` +
@@ -1224,11 +1255,11 @@
                             <div class="badge-origin ${originClass}">${originLabel}</div>
                             <div class="badge-tipo">${tipoLabel}</div>
                         </div>
-                        <div class="auction-banner ${isUrgent ? 'tomorrow' : ''}">
-                            <span class="auction-icon">${isTomorrow ? '🔴' : isUrgent ? '🟡' : '📅'}</span>
+                        <div class="auction-banner ${bannerClass}">
+                            <span class="auction-icon">${bannerIcon}</span>
                             <div class="auction-text">
-                                <span class="auction-label">Subasta programada</span>
-                                <span class="auction-date">${isTomorrow ? '¡MAÑANA! ' : ''}${auctionDateStr}</span>
+                                <span class="auction-label">${isToday ? 'Subasta en curso' : 'Subasta programada'}</span>
+                                <span class="auction-date">${bannerPrefix}${auctionDateStr}</span>
                             </div>
                         </div>
                         <div class="car-info">
