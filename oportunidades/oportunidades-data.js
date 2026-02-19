@@ -1,114 +1,206 @@
-// =============================================
-// OPORTUNIDADES DE SUBASTA - Alabol Car Broker
-// =============================================
-// Israel: Edita este archivo para agregar o quitar autos.
-// Solo cambia los datos aquí, no toques el HTML.
-//
-// Campos:
-//   id          → Número único (1, 2, 3...)
-//   marca       → Marca del auto
-//   modelo      → Modelo específico
-//   anio        → Año
-//   tipo        → "sedan", "suv", "pickup", "deportivo"
-//   origen      → "mexico" o "usa"
-//   foto        → URL de la foto (pega link de imagen)
-//   danio       → Descripción del daño (lo que quieras que vea el cliente)
-//   precioTotal → Precio final para el cliente (TODO incluido)
-//   precioMercado → Precio promedio en MercadoLibre/agencias
-//   fechaLimite → Fecha de la subasta "YYYY-MM-DD"
-//   disponible  → true (visible) o false (oculto)
-//   notas       → Notas extra que ve el cliente
-// =============================================
+// ============================================
+// OPORTUNIDADES DE SUBASTA — ALABOL CAR BROKER
+// ============================================
+// Última actualización: 18 Febrero 2026
+// Próximas subastas:
+//   - Subasta MX #1: 19 Feb 2026 (LVA México)
+//   - Subasta MX #2: 26 Feb 2026 (Hilco Acetec)
+// ============================================
 
 const OPORTUNIDADES = [
+
+    // ========== SUBASTA 19 FEB 2026 — LVA MÉXICO ==========
+    // Subasta Pública con Martillero en Vivo — 119 lotes
+    // Para accesar a lotes específicos de LVA, contáctanos por WhatsApp
+
+    // ========== SUBASTA 26 FEB 2026 — HILCO ACETEC ==========
+
+    // --- DEPORTIVOS / SEDANES PREMIUM ---
+
     {
-        id: 1,
-        marca: "Toyota",
-        modelo: "RAV4 XLE",
+        marca: 'Dodge',
+        modelo: 'Charger SXT',
         anio: 2022,
-        tipo: "suv",
-        origen: "mexico",
-        foto: "",
-        danio: "Cosmético leve — golpe en defensa trasera",
-        precioTotal: 285000,
-        precioMercado: 480000,
-        fechaLimite: "2026-02-25",
-        disponible: true,
-        notas: "Motor y transmisión en perfecto estado"
+        tipo: 'deportivo',
+        origen: 'mexico',
+        danio: 'Subasta por liquidación de flotilla — múltiples unidades disponibles',
+        precioTotal: 175000,
+        precioMercado: 450000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '🔥 11 unidades idénticas disponibles — Precio de salida. Ubicación: Querétaro',
+        disponible: true
     },
+
     {
-        id: 2,
-        marca: "Honda",
-        modelo: "Civic EX",
-        anio: 2021,
-        tipo: "sedan",
-        origen: "mexico",
-        foto: "",
-        danio: "Daño frontal menor — aire desplegado",
-        precioTotal: 195000,
+        marca: 'Dodge',
+        modelo: 'Charger SXT',
+        anio: 2022,
+        tipo: 'deportivo',
+        origen: 'mexico',
+        danio: 'Subasta por liquidación de flotilla — segunda unidad',
+        precioTotal: 175000,
+        precioMercado: 450000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '🔥 Mismo lote de Chargers — Precio de salida. Ubicación: Querétaro',
+        disponible: true
+    },
+
+    // --- SEDANES ---
+
+    {
+        marca: 'Volkswagen',
+        modelo: 'Vento Comfortline 1.6',
+        anio: 2017,
+        tipo: 'sedan',
+        origen: 'mexico',
+        danio: 'Precio reservado — auto en condiciones de operación',
+        precioTotal: 100000,
+        precioMercado: 220000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Nuevo León',
+        disponible: true
+    },
+
+    {
+        marca: 'Volkswagen',
+        modelo: 'Vento Comfortline',
+        anio: 2018,
+        tipo: 'sedan',
+        origen: 'mexico',
+        danio: 'Precio reservado — auto en condiciones de operación',
+        precioTotal: 110000,
+        precioMercado: 240000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Yucatán',
+        disponible: true
+    },
+
+    // --- SUVs ---
+
+    {
+        marca: 'Jeep',
+        modelo: 'Grand Cherokee',
+        anio: 2014,
+        tipo: 'suv',
+        origen: 'mexico',
+        danio: 'Precio reservado — SUV premium',
+        precioTotal: 180000,
+        precioMercado: 350000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Nuevo León',
+        disponible: true
+    },
+
+    {
+        marca: 'Jeep',
+        modelo: 'Grand Cherokee',
+        anio: 2015,
+        tipo: 'suv',
+        origen: 'mexico',
+        danio: 'Precio reservado — SUV premium',
+        precioTotal: 200000,
         precioMercado: 380000,
-        fechaLimite: "2026-02-26",
-        disponible: true,
-        notas: "Solo 35,000 km recorridos"
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Nuevo León',
+        disponible: true
     },
+
     {
-        id: 3,
-        marca: "RAM",
-        modelo: "1500 Classic",
-        anio: 2020,
-        tipo: "pickup",
-        origen: "usa",
-        foto: "",
-        danio: "Daño lateral — puertas y panel",
-        precioTotal: 320000,
-        precioMercado: 580000,
-        fechaLimite: "2026-02-28",
-        disponible: true,
-        notas: "Motor HEMI 5.7L, 4x4"
+        marca: 'Chevrolet',
+        modelo: 'Suburban',
+        anio: 2015,
+        tipo: 'suv',
+        origen: 'mexico',
+        danio: 'Precio reservado — SUV de lujo familiar',
+        precioTotal: 250000,
+        precioMercado: 480000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Nuevo León',
+        disponible: true
     },
+
     {
-        id: 4,
-        marca: "Nissan",
-        modelo: "Sentra SR",
-        anio: 2023,
-        tipo: "sedan",
-        origen: "mexico",
-        foto: "",
-        danio: "Daño por granizo — carrocería",
-        precioTotal: 210000,
-        precioMercado: 410000,
-        fechaLimite: "2026-03-01",
-        disponible: true,
-        notas: "Mecánicamente perfecto, solo lámina"
+        marca: 'Mazda',
+        modelo: 'CX-7',
+        anio: 2010,
+        tipo: 'suv',
+        origen: 'mexico',
+        danio: 'Precio de salida $50,000 MXN — SUV compacta',
+        precioTotal: 50000,
+        precioMercado: 150000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '🔥 Precio de salida confirmado. Oportunidad de entrada baja. Ubicación: Quintana Roo',
+        disponible: true
     },
+
+    // --- PICK-UPS ---
+
     {
-        id: 5,
-        marca: "Ford",
-        modelo: "Explorer Limited",
-        anio: 2021,
-        tipo: "suv",
-        origen: "usa",
-        foto: "",
-        danio: "Frontal leve — faro y defensa",
-        precioTotal: 390000,
-        precioMercado: 720000,
-        fechaLimite: "2026-03-03",
-        disponible: true,
-        notas: "Piel, techo solar, 3 filas"
-    },
-    {
-        id: 6,
-        marca: "Chevrolet",
-        modelo: "Silverado LT",
-        anio: 2019,
-        tipo: "pickup",
-        origen: "mexico",
-        foto: "",
-        danio: "Trasero — caja y defensa",
+        marca: 'Ford',
+        modelo: 'F-350 XL 6.2L',
+        anio: 2016,
+        tipo: 'pickup',
+        origen: 'mexico',
+        danio: 'Precio reservado — Pickup de trabajo heavy duty',
         precioTotal: 280000,
         precioMercado: 520000,
-        fechaLimite: "2026-02-27",
-        disponible: true,
-        notas: "Motor 5.3L V8, doble cabina"
-    }
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Querétaro',
+        disponible: true
+    },
+
+    {
+        marca: 'Chevrolet',
+        modelo: 'Silverado',
+        anio: 2020,
+        tipo: 'pickup',
+        origen: 'mexico',
+        danio: 'Precio reservado — Pickup americana reciente',
+        precioTotal: 300000,
+        precioMercado: 550000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Querétaro',
+        disponible: true
+    },
+
+    {
+        marca: 'Chrysler',
+        modelo: 'Ram 4000',
+        anio: 2017,
+        tipo: 'pickup',
+        origen: 'mexico',
+        danio: 'Precio reservado — Pickup de carga pesada',
+        precioTotal: 200000,
+        precioMercado: 400000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '💰 Precio reservado (se define en subasta). Estimado conservador. Ubicación: Guanajuato',
+        disponible: true
+    },
+
+    {
+        marca: 'Lincoln',
+        modelo: 'Navigator',
+        anio: 2008,
+        tipo: 'suv',
+        origen: 'mexico',
+        danio: 'Precio de salida $93,000 MXN — SUV de lujo clásica',
+        precioTotal: 93000,
+        precioMercado: 200000,
+        fechaLimite: '2026-02-26',
+        foto: '',
+        notas: '🔥 Precio de salida confirmado. Ubicación: Guanajuato',
+        disponible: true
+    },
+
 ];
