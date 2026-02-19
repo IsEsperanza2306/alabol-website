@@ -9,22 +9,32 @@
         content="Autos de subasta con hasta 50% de ahorro. Alabol Car Broker te consigue tu auto ideal.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a1f1a;
-            --bg-mid: #0d2921;
-            --bg-light: #0f3329;
+            --bg-primary: #050d09;
+            --bg-secondary: #091a13;
+            --bg-tertiary: #0d261c;
+            --bg-card: rgba(13, 38, 28, 0.6);
             --gold: #d4af37;
             --gold-light: #f4e5b0;
-            --gold-dim: rgba(212, 175, 55, 0.3);
-            --green-text: #a8c5b8;
-            --glass-bg: rgba(15, 51, 41, 0.5);
-            --glass-border: rgba(212, 175, 55, 0.25);
-            --white: #ffffff;
-            --green-badge: #25D366;
-            --red-badge: #e74c3c;
+            --gold-bright: #ffd700;
+            --gold-dim: rgba(212, 175, 55, 0.25);
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --emerald: #34d399;
+            --emerald-dim: rgba(52, 211, 153, 0.15);
+            --green-text: #94b8a7;
+            --green-muted: rgba(148, 184, 167, 0.5);
+            --glass-bg: rgba(13, 38, 28, 0.65);
+            --glass-border: rgba(212, 175, 55, 0.18);
+            --white: #f0f0f0;
+            --white-bright: #ffffff;
+            --whatsapp: #25D366;
+            --red-urgent: #ff4757;
+            --red-glow: rgba(255, 71, 87, 0.3);
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f4e5b0 40%, #d4af37 60%, #c9a961 80%, #d4af37 100%);
+            --gradient-card: linear-gradient(160deg, rgba(13, 38, 28, 0.7) 0%, rgba(9, 26, 19, 0.8) 100%);
         }
 
         * {
@@ -33,80 +43,117 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-dark);
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
             min-height: 100vh;
-            padding: 16px;
             overflow-x: hidden;
             position: relative;
+            color: var(--white);
         }
 
-        /* Animated gradient background */
-        body::before {
-            content: '';
+        /* ========== ANIMATED BACKGROUND ========== */
+        .bg-effects {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg,
-                    #0a1f1a 0%, #0d2921 25%, #0f3329 50%, #0d2921 75%, #0a1f1a 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            z-index: -2;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
         }
 
-        /* Gold particles */
-        body::after {
+        .bg-effects::before {
             content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 600px 600px at 20% 20%, rgba(212, 175, 55, 0.06), transparent),
+                radial-gradient(ellipse 800px 800px at 80% 80%, rgba(52, 211, 153, 0.04), transparent),
+                radial-gradient(ellipse 400px 400px at 50% 50%, rgba(212, 175, 55, 0.03), transparent);
+            animation: bgOrbit 30s linear infinite;
+        }
+
+        .bg-effects::after {
+            content: '';
+            position: absolute;
+            inset: 0;
             background-image:
-                radial-gradient(2px 2px at 20% 30%, rgba(212, 175, 55, 0.25), transparent),
-                radial-gradient(2px 2px at 60% 70%, rgba(212, 175, 55, 0.15), transparent),
-                radial-gradient(1px 1px at 50% 50%, rgba(212, 175, 55, 0.15), transparent),
-                radial-gradient(1px 1px at 80% 10%, rgba(212, 175, 55, 0.25), transparent),
-                radial-gradient(1px 1px at 30% 80%, rgba(212, 175, 55, 0.15), transparent);
-            background-size: 200% 200%;
-            animation: floatParticles 20s ease-in-out infinite;
-            z-index: -1;
+                radial-gradient(1.5px 1.5px at 15% 25%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(1px 1px at 45% 65%, rgba(212, 175, 55, 0.2), transparent),
+                radial-gradient(1.5px 1.5px at 75% 15%, rgba(52, 211, 153, 0.2), transparent),
+                radial-gradient(1px 1px at 85% 75%, rgba(212, 175, 55, 0.15), transparent),
+                radial-gradient(1px 1px at 35% 85%, rgba(52, 211, 153, 0.15), transparent),
+                radial-gradient(2px 2px at 55% 35%, rgba(212, 175, 55, 0.2), transparent);
+            background-size: 150% 150%;
+            animation: starsFloat 25s ease-in-out infinite alternate;
         }
 
-        @keyframes gradientShift {
+        /* Scan line effect */
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            animation: scanDown 8s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-            0%,
+        @keyframes bgOrbit {
+            0% {
+                transform: rotate(0deg);
+            }
+
             100% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
+                transform: rotate(360deg);
             }
         }
 
-        @keyframes floatParticles {
+        @keyframes starsFloat {
+            0% {
+                background-position: 0% 0%;
+                opacity: 0.8;
+            }
 
-            0%,
             100% {
-                transform: translate(0, 0);
-            }
-
-            33% {
-                transform: translate(30px, -30px);
-            }
-
-            66% {
-                transform: translate(-20px, 20px);
+                background-position: 100% 100%;
+                opacity: 1;
             }
         }
 
+        @keyframes scanDown {
+            0% {
+                top: -2px;
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+
+        /* ========== CONTAINER ========== */
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
+            padding: 16px;
             position: relative;
             z-index: 1;
         }
@@ -114,15 +161,16 @@
         /* ========== HEADER ========== */
         .header {
             text-align: center;
-            padding: 24px 20px;
-            margin-bottom: 24px;
-            animation: fadeInDown 0.6s ease-out;
+            padding: 40px 20px 30px;
+            margin-bottom: 28px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
-        @keyframes fadeInDown {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(30px);
             }
 
             to {
@@ -133,9 +181,9 @@
 
         .logo-container {
             position: relative;
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 12px;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
         }
 
         .logo-glow {
@@ -143,14 +191,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, transparent 70%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, rgba(52, 211, 153, 0.1) 50%, transparent 70%);
             border-radius: 50%;
-            animation: logoGlowPulse 3s ease-in-out infinite;
+            animation: logoBreath 4s ease-in-out infinite;
         }
 
-        @keyframes logoGlowPulse {
+        @keyframes logoBreath {
 
             0%,
             100% {
@@ -159,117 +207,155 @@
             }
 
             50% {
-                transform: translate(-50%, -50%) scale(1.15);
+                transform: translate(-50%, -50%) scale(1.2);
                 opacity: 0.9;
             }
         }
 
         .logo-circle {
             position: relative;
-            width: 90px;
-            height: 90px;
-            background: rgba(15, 51, 41, 0.3);
+            width: 100px;
+            height: 100px;
+            background: rgba(13, 38, 28, 0.4);
             border-radius: 50%;
             border: 2px solid rgba(212, 175, 55, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            box-shadow:
+                0 0 40px rgba(212, 175, 55, 0.2),
+                0 0 80px rgba(212, 175, 55, 0.05),
+                inset 0 0 25px rgba(212, 175, 55, 0.1);
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
 
         .logo-circle img {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
         }
 
         .header h1 {
-            font-size: 22px;
-            font-weight: 800;
-            background: linear-gradient(135deg,
-                    #d4af37 0%, #f4e5b0 25%, #d4af37 50%, #c9a961 75%, #d4af37 100%);
-            background-size: 200% auto;
+            font-size: 28px;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            background-size: 300% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 1.5px;
-            animation: shimmerText 3s linear infinite;
-            margin-bottom: 4px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: shimmerGold 4s linear infinite;
+            margin-bottom: 8px;
         }
 
-        @keyframes shimmerText {
+        @keyframes shimmerGold {
             to {
-                background-position: 200% center;
+                background-position: 300% center;
             }
         }
 
         .header .subtitle {
             color: var(--green-text);
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .header .subtitle .highlight {
-            color: var(--gold);
+            color: var(--emerald);
             font-weight: 600;
         }
 
-        /* Stats row */
+        /* ========== STATS ========== */
         .stats-row {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 16px 0;
+            gap: 12px;
+            margin: 20px 0;
             flex-wrap: wrap;
         }
 
         .stat-item {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 12px;
+            gap: 8px;
+            font-size: 13px;
             color: var(--green-text);
             font-weight: 500;
-            background: rgba(212, 175, 55, 0.08);
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            background: var(--glass-bg);
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
         .stat-item .stat-num {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 14px;
+            color: var(--gold-light);
+            font-weight: 800;
+            font-size: 16px;
         }
 
         /* ========== FILTERS ========== */
         .filters {
-            background: linear-gradient(135deg,
-                    rgba(15, 51, 41, 0.5) 0%,
-                    rgba(13, 41, 33, 0.5) 100%);
-            backdrop-filter: blur(15px);
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 16px 20px;
-            margin-bottom: 24px;
-            animation: fadeInDown 0.6s ease-out 0.2s both;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filters::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            animation: borderScan 6s linear infinite;
+        }
+
+        @keyframes borderScan {
+            to {
+                left: 100%;
+            }
         }
 
         .filters-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filters-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold-dim), transparent);
         }
 
         .filter-groups {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
@@ -280,435 +366,83 @@
         }
 
         .filter-btn {
-            padding: 7px 14px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 20px;
-            background: rgba(10, 31, 26, 0.4);
-            color: var(--green-text);
-            font-family: 'Poppins', sans-serif;
-            font-size: 12px;
+            padding: 8px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 50px;
+            background: rgba(5, 13, 9, 0.5);
+            color: var(--green-muted);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .filter-btn:hover {
             border-color: var(--gold-dim);
-            background: rgba(212, 175, 55, 0.08);
+            color: var(--green-text);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn:hover::before {
+            opacity: 1;
         }
 
         .filter-btn.active {
             border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.12);
             color: var(--gold-light);
-            font-weight: 600;
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+            font-weight: 700;
+            box-shadow: 0 0 20px var(--gold-glow), inset 0 0 15px rgba(212, 175, 55, 0.05);
         }
 
         .filter-separator {
             width: 1px;
-            background: rgba(212, 175, 55, 0.2);
+            background: linear-gradient(180deg, transparent, var(--gold-dim), transparent);
             margin: 0 4px;
-        }
-
-        /* ========== GRID ========== */
-        .cars-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        /* ========== CAR CARD ========== */
-        .car-card {
-            background: linear-gradient(135deg,
-                    rgba(15, 51, 41, 0.55) 0%,
-                    rgba(13, 41, 33, 0.55) 100%);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: cardIn 0.5s ease-out both;
-            position: relative;
-        }
-
-        .car-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.1);
-        }
-
-        @keyframes cardIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.97);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Photo */
-        .car-photo {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(15, 51, 41, 0.8), rgba(13, 41, 33, 0.8));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .car-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .car-photo .placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: rgba(168, 197, 184, 0.4);
-        }
-
-        .car-photo .placeholder .icon {
-            font-size: 40px;
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
-        }
-
-        .car-photo .placeholder span {
-            font-size: 12px;
-        }
-
-        /* Badges on photo */
-        .badge-origin {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            backdrop-filter: blur(8px);
-        }
-
-        .badge-origin.mexico {
-            background: rgba(0, 150, 60, 0.85);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .badge-origin.usa {
-            background: rgba(0, 60, 150, 0.85);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .badge-tipo {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 700;
-            background: rgba(212, 175, 55, 0.9);
-            color: var(--bg-dark);
-            box-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.7;
-            }
-        }
-
-        /* ========== AUCTION DATE BANNER ========== */
-        .auction-banner {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%);
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .auction-banner .auction-icon {
-            font-size: 22px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .auction-banner .auction-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .auction-banner .auction-label {
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--gold);
-            font-weight: 700;
-        }
-
-        .auction-banner .auction-date {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-
-        .auction-banner.tomorrow {
-            background: linear-gradient(135deg, rgba(231, 76, 60, 0.2) 0%, rgba(212, 175, 55, 0.12) 100%);
-            border-color: rgba(231, 76, 60, 0.35);
-        }
-
-        .auction-banner.tomorrow .auction-icon {
-            animation: pulse 1s ease-in-out infinite;
-        }
-
-        .auction-banner.tomorrow .auction-date {
-            color: #ff6b6b;
-        }
-
-        /* Card body */
-        .car-info {
-            padding: 18px;
-        }
-
-        .car-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 2px;
-        }
-
-        .car-year {
-            font-size: 13px;
-            color: var(--gold);
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        /* ========== LOCATION (PROMINENT) ========== */
-        .car-location {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.04) 100%);
-            border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .car-location .loc-icon {
-            font-size: 20px;
-        }
-
-        .car-location .loc-text {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--gold-light);
-            letter-spacing: 0.3px;
-        }
-
-        /* ========== DESCRIPTION ========== */
-        .car-damage {
-            font-size: 13px;
-            color: var(--green-text);
-            background: rgba(212, 175, 55, 0.06);
-            padding: 10px 14px;
-            border-radius: 10px;
-            border-left: 3px solid var(--gold-dim);
-            margin-bottom: 14px;
-            line-height: 1.5;
-        }
-
-        .car-notes {
-            font-size: 11px;
-            color: rgba(168, 197, 184, 0.6);
-            font-style: italic;
-            margin-bottom: 14px;
-        }
-
-        /* ========== PRICE RESERVED ========== */
-        .price-reserved {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 16px;
-            margin-bottom: 14px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(212, 175, 55, 0.03));
-            border: 1px dashed rgba(212, 175, 55, 0.3);
-            border-radius: 10px;
-        }
-
-        .price-reserved .lock-icon {
-            font-size: 18px;
-        }
-
-        .price-reserved .reserved-text {
-            font-size: 15px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #d4af37, #f4e5b0, #d4af37);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmerText 3s linear infinite;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        /* CTA */
-        .cta-interest {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 13px;
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.4s;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.25);
-        }
-
-        .cta-interest:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(37, 211, 102, 0.4), 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* No results */
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--green-text);
-        }
-
-        .no-results .icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
-        }
-
-        .no-results p {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .no-results .sub {
-            font-size: 13px;
-            color: rgba(168, 197, 184, 0.5);
-            margin-top: 4px;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 24px;
-            color: rgba(168, 197, 184, 0.4);
-            font-size: 12px;
-        }
-
-        .footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .footer .cta-group-footer {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 12px;
-            padding: 8px 20px;
-            background: rgba(37, 211, 102, 0.12);
-            color: #25D366;
-            border: 1px solid rgba(37, 211, 102, 0.3);
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s;
-        }
-
-        .footer .cta-group-footer:hover {
-            background: rgba(37, 211, 102, 0.2);
-            border-color: #25D366;
-        }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 768px) {
-            .cars-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 18px;
-            }
-
-            .filter-groups {
-                flex-direction: column;
-            }
-
-            .filter-separator {
-                display: none;
-            }
-
-            .stats-row {
-                gap: 8px;
-            }
-
-            .stat-item {
-                font-size: 11px;
-                padding: 5px 10px;
-            }
         }
 
         /* ========== TOOLS BANNER ========== */
         .tools-banner {
-            background: linear-gradient(135deg, rgba(15, 51, 41, 0.5) 0%, rgba(13, 41, 33, 0.5) 100%);
-            backdrop-filter: blur(15px);
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 14px 20px;
-            margin-bottom: 24px;
-            animation: fadeInDown 0.6s ease-out 0.3s both;
+            border-radius: 20px;
+            padding: 18px 24px;
+            margin-bottom: 28px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
         }
 
         .tools-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tools-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold-dim), transparent);
         }
 
         .tools-links {
@@ -720,42 +454,42 @@
         .tool-link {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: rgba(212, 175, 55, 0.07);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
+            gap: 10px;
+            padding: 12px 18px;
+            background: rgba(5, 13, 9, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            border-radius: 14px;
             color: var(--green-text);
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             flex: 1;
             min-width: 180px;
         }
 
         .tool-link:hover {
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.08);
             border-color: var(--gold);
             color: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
         }
 
         .tool-link.vip {
-            background: rgba(212, 175, 55, 0.12);
-            border-color: rgba(212, 175, 55, 0.35);
+            background: rgba(212, 175, 55, 0.08);
+            border-color: rgba(212, 175, 55, 0.25);
             color: var(--gold-light);
             font-weight: 600;
         }
 
         .tool-link.vip:hover {
-            background: rgba(212, 175, 55, 0.22);
-            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.25);
+            background: rgba(212, 175, 55, 0.15);
+            box-shadow: 0 8px 35px rgba(212, 175, 55, 0.2);
         }
 
         .tool-icon {
-            font-size: 18px;
+            font-size: 20px;
         }
 
         .tool-text {
@@ -767,7 +501,500 @@
             font-size: 16px;
         }
 
+        /* ========== GRID ========== */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        /* ========== CAR CARD ========== */
+        .car-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+            position: relative;
+        }
+
+        .car-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.08),
+                0 0 80px rgba(212, 175, 55, 0.04);
+        }
+
+        .car-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes cardReveal {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ========== CAR PHOTO ========== */
+        .car-photo {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(9, 26, 19, 0.9), rgba(5, 13, 9, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .car-photo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(transparent, rgba(5, 13, 9, 0.6));
+            pointer-events: none;
+        }
+
+        .car-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .car-card:hover .car-photo img {
+            transform: scale(1.05);
+        }
+
+        .car-photo .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(148, 184, 167, 0.35);
+        }
+
+        .car-photo .placeholder .icon {
+            font-size: 48px;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .car-photo .placeholder span:last-child {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* ========== BADGES ========== */
+        .badge-origin {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(12px);
+            z-index: 2;
+        }
+
+        .badge-origin.mexico {
+            background: rgba(0, 150, 60, 0.85);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 150, 60, 0.3);
+        }
+
+        .badge-origin.usa {
+            background: rgba(0, 60, 150, 0.85);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 60, 150, 0.3);
+        }
+
+        .badge-tipo {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(212, 175, 55, 0.9);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== AUCTION BANNER ========== */
+        .auction-banner {
+            background: linear-gradient(135deg,
+                    rgba(212, 175, 55, 0.1) 0%,
+                    rgba(52, 211, 153, 0.05) 50%,
+                    rgba(212, 175, 55, 0.1) 100%);
+            background-size: 200% 100%;
+            animation: bannerShimmer 4s ease infinite;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+        }
+
+        @keyframes bannerShimmer {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 200% 50%;
+            }
+        }
+
+        .auction-banner .auction-icon {
+            font-size: 24px;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .auction-banner .auction-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .auction-banner .auction-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .auction-banner .auction-date {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--white-bright);
+            letter-spacing: 0.5px;
+        }
+
+        .auction-banner.tomorrow {
+            background: linear-gradient(135deg,
+                    rgba(255, 71, 87, 0.15) 0%,
+                    rgba(212, 175, 55, 0.08) 50%,
+                    rgba(255, 71, 87, 0.15) 100%);
+            background-size: 200% 100%;
+            border-color: rgba(255, 71, 87, 0.25);
+        }
+
+        .auction-banner.tomorrow .auction-icon {
+            animation: iconPulse 1s ease-in-out infinite;
+        }
+
+        .auction-banner.tomorrow .auction-date {
+            color: var(--red-urgent);
+            text-shadow: 0 0 20px var(--red-glow);
+        }
+
+        /* ========== CAR INFO ========== */
+        .car-info {
+            padding: 20px;
+        }
+
+        .car-title {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--white-bright);
+            margin-bottom: 3px;
+            letter-spacing: 0.3px;
+        }
+
+        .car-year {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== LOCATION ========== */
+        .car-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            margin-bottom: 14px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(52, 211, 153, 0.04) 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            transition: all 0.3s;
+        }
+
+        .car-card:hover .car-location {
+            border-color: rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .car-location .loc-icon {
+            font-size: 22px;
+        }
+
+        .car-location .loc-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gold-light);
+            letter-spacing: 0.3px;
+        }
+
+        /* ========== DESCRIPTION ========== */
+        .car-damage {
+            font-size: 13px;
+            color: var(--green-text);
+            background: rgba(5, 13, 9, 0.5);
+            padding: 12px 16px;
+            border-radius: 14px;
+            border-left: 3px solid var(--gold-dim);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        /* ========== PRICE RESERVED ========== */
+        .price-reserved {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.06), rgba(52, 211, 153, 0.03));
+            border: 1px dashed rgba(212, 175, 55, 0.25);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-reserved::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+            animation: priceShine 3s ease-in-out infinite;
+        }
+
+        @keyframes priceShine {
+            0% {
+                left: -50%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        .price-reserved .lock-icon {
+            font-size: 20px;
+        }
+
+        .price-reserved .reserved-text {
+            font-size: 16px;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmerGold 4s linear infinite;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ========== CTA BUTTON ========== */
+        .cta-interest {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-interest::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-interest:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 8px 30px rgba(37, 211, 102, 0.35),
+                0 0 40px rgba(37, 211, 102, 0.15);
+        }
+
+        .cta-interest:hover::before {
+            left: 100%;
+        }
+
+        /* ========== NO RESULTS ========== */
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--green-text);
+        }
+
+        .no-results .icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+
+        .no-results p {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .no-results .sub {
+            font-size: 14px;
+            color: var(--green-muted);
+            margin-top: 6px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--green-muted);
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .footer .cta-group-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding: 10px 24px;
+            background: rgba(37, 211, 102, 0.1);
+            color: var(--whatsapp);
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.35s;
+        }
+
+        .footer .cta-group-footer:hover {
+            background: rgba(37, 211, 102, 0.18);
+            border-color: var(--whatsapp);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
+            .cars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+
+            .header .subtitle {
+                font-size: 13px;
+            }
+
+            .filter-groups {
+                flex-direction: column;
+            }
+
+            .filter-separator {
+                display: none;
+            }
+
+            .stats-row {
+                gap: 6px;
+            }
+
+            .stat-item {
+                font-size: 11px;
+                padding: 6px 12px;
+            }
+
+            .stat-item .stat-num {
+                font-size: 14px;
+            }
+
             .tools-links {
                 flex-direction: column;
             }
@@ -775,11 +1002,38 @@
             .tool-link {
                 min-width: unset;
             }
+
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 28px 16px 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .cars-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .car-photo {
+                height: 190px;
+            }
+
+            .car-title {
+                font-size: 17px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Background effects -->
+    <div class="bg-effects"></div>
+    <div class="scan-line"></div>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -789,8 +1043,8 @@
                     <img src="logo-circular.png" alt="Alabol Car Broker">
                 </div>
             </div>
-            <h1>OPORTUNIDADES DE SUBASTA</h1>
-            <p class="subtitle">Autos con hasta <span class="highlight">50% de ahorro</span> vs agencia</p>
+            <h1>Oportunidades de Subasta</h1>
+            <p class="subtitle">Vehículos con hasta <span class="highlight">50% de ahorro</span> vs mercado</p>
 
             <div class="stats-row">
                 <div class="stat-item">
@@ -807,7 +1061,7 @@
 
         <!-- Filters -->
         <div class="filters">
-            <div class="filters-label">🔍 Filtrar</div>
+            <div class="filters-label">🔍 Filtrar oportunidades</div>
             <div class="filter-groups">
                 <div class="filter-group" id="filterTipo">
                     <button class="filter-btn active" data-filter="todos">Todos</button>
@@ -833,7 +1087,7 @@
 
         <!-- Tools Banner -->
         <div class="tools-banner">
-            <div class="tools-label">🧮 HERRAMIENTAS</div>
+            <div class="tools-label">🧮 Herramientas</div>
             <div class="tools-links">
                 <a href="https://alabolcar.vip/#/calculadora" class="tool-link" target="_blank" rel="noopener">
                     <span class="tool-icon">📊</span>
@@ -889,26 +1143,9 @@
         // =====================
         // HELPERS
         // =====================
-        function formatMoney(n) {
-            return '$' + n.toLocaleString('es-MX');
-        }
-
-        function calcSavings(market, total) {
-            return Math.round(((market - total) / market) * 100);
-        }
-
         function getDaysLeft(fecha) {
             const diff = new Date(fecha) - new Date();
             return Math.ceil(diff / (1000 * 60 * 60 * 24));
-        }
-
-        function formatDeadline(fecha) {
-            const days = getDaysLeft(fecha);
-            if (days <= 0) return { text: '⚠️ Finalizada', urgent: true };
-            if (days <= 2) return { text: `🔥 ${days} día${days > 1 ? 's' : ''} restante${days > 1 ? 's' : ''}`, urgent: true };
-            if (days <= 5) return { text: `⏳ ${days} días restantes`, urgent: false };
-            const d = new Date(fecha);
-            return { text: `📅 Hasta ${d.getDate()}/${d.getMonth() + 1}`, urgent: false };
         }
 
         // =====================
@@ -920,16 +1157,9 @@
 
             const filtered = OPORTUNIDADES.filter(car => {
                 if (!car.disponible) return false;
-
-                // Tipo filter
                 if (activeFilters.tipo !== 'todos' && car.tipo !== activeFilters.tipo) return false;
-
-                // Origen filter
                 if (activeFilters.origen !== 'todos' && car.origen !== activeFilters.origen) return false;
-
-                // Fecha filter
                 if (activeFilters.fecha !== 'todos' && car.fechaLimite !== activeFilters.fecha) return false;
-
                 return true;
             });
 
@@ -948,14 +1178,12 @@
             noResults.style.display = 'none';
 
             grid.innerHTML = filtered.map((car, i) => {
-                const deadline = formatDeadline(car.fechaLimite);
                 const daysLeft = getDaysLeft(car.fechaLimite);
                 const originLabel = car.origen === 'mexico' ? '🇲🇽 México' : '🇺🇸 USA';
                 const originClass = car.origen === 'mexico' ? 'mexico' : 'usa';
                 const tipoLabel = car.tipo === 'sedan' ? 'Sedán' : car.tipo === 'suv' ? 'SUV' : car.tipo === 'pickup' ? 'Pick-up' : 'Deportivo';
 
-                // Extract location from notas
-                const locMatch = car.notas.match(/Ubicación:\s*([^.]+)|CDMX|Querétaro|Monterrey[^.]*|Guanajuato|Quintana Roo|Yucatán|Cancún[^.]*|Mérida[^.]*|Ciudad Juárez[^.]*|La Paz[^.]*|Baja California[^.]*|Cd\. del Carmen[^.]*|Campeche/);
+                // Extract location
                 let location = 'México';
                 if (car.notas.includes('CDMX')) location = 'Ciudad de México';
                 else if (car.notas.includes('Querétaro')) location = 'Querétaro';
@@ -969,7 +1197,7 @@
                 else if (car.notas.includes('Carmen') || car.notas.includes('Campeche')) location = 'Cd. del Carmen, Camp.';
                 else if (car.notas.includes('Baja California')) location = 'Baja California Sur';
 
-                // Format auction date nicely
+                // Format auction date
                 const auctionDate = new Date(car.fechaLimite);
                 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
                 const auctionDateStr = `${auctionDate.getDate()} de ${months[auctionDate.getMonth()]} ${auctionDate.getFullYear()}`;
@@ -990,7 +1218,7 @@
                     : `<div class="placeholder"><span class="icon">🚗</span><span>${car.marca} ${car.modelo}</span></div>`;
 
                 return `
-                    <div class="car-card" style="animation-delay: ${i * 0.08}s">
+                    <div class="car-card" style="animation-delay: ${i * 0.07}s">
                         <div class="car-photo">
                             ${photoHTML}
                             <div class="badge-origin ${originClass}">${originLabel}</div>
