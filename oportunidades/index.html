@@ -662,6 +662,92 @@
                 padding: 5px 10px;
             }
         }
+
+        /* ========== TOOLS BANNER ========== */
+        .tools-banner {
+            background: linear-gradient(135deg, rgba(15, 51, 41, 0.5) 0%, rgba(13, 41, 33, 0.5) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 14px 20px;
+            margin-bottom: 24px;
+            animation: fadeInDown 0.6s ease-out 0.3s both;
+        }
+
+        .tools-label {
+            font-size: 11px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .tools-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(212, 175, 55, 0.07);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            color: var(--green-text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .tool-link:hover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold);
+            color: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .tool-link.vip {
+            background: rgba(212, 175, 55, 0.12);
+            border-color: rgba(212, 175, 55, 0.35);
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .tool-link.vip:hover {
+            background: rgba(212, 175, 55, 0.22);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.25);
+        }
+
+        .tool-icon {
+            font-size: 18px;
+        }
+
+        .tool-text {
+            flex: 1;
+        }
+
+        .tool-arrow {
+            color: var(--gold-dim);
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .tools-links {
+                flex-direction: column;
+            }
+
+            .tool-link {
+                min-width: unset;
+            }
+        }
     </style>
 </head>
 
@@ -716,6 +802,29 @@
                     <button class="filter-btn" data-filter="400">$250k - $400k</button>
                     <button class="filter-btn" data-filter="400plus">$400k+</button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Tools Banner -->
+        <div class="tools-banner">
+            <div class="tools-label">🧮 HERRAMIENTAS</div>
+            <div class="tools-links">
+                <a href="https://alabolcar.vip/#/calculadora" class="tool-link" target="_blank" rel="noopener">
+                    <span class="tool-icon">📊</span>
+                    <span class="tool-text">Calculadora de Importación</span>
+                    <span class="tool-arrow">→</span>
+                </a>
+                <a href="https://alabolcar.vip/#/inventario" class="tool-link" target="_blank" rel="noopener">
+                    <span class="tool-icon">🚗</span>
+                    <span class="tool-text">Inventario Disponible</span>
+                    <span class="tool-arrow">→</span>
+                </a>
+                <a href="https://merry-dusk-9e03d9.netlify.app/vip/" class="tool-link vip" target="_blank"
+                    rel="noopener">
+                    <span class="tool-icon">⭐</span>
+                    <span class="tool-text">Únete a la Lista VIP</span>
+                    <span class="tool-arrow">→</span>
+                </a>
             </div>
         </div>
 
